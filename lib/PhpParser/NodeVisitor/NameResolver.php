@@ -234,8 +234,8 @@ class NameResolver extends NodeVisitorAbstract
 
             // unqualified names inside a namespace cannot be resolved at compile-time
             // add the namespaced version of the name as an attribute
-            $name->setAttribute('namespacedName',
-                FullyQualified::concat($this->namespace, $name, $name->getAttributes()));
+            $name->namespacedName =
+                FullyQualified::concat($this->namespace, $name, $name->getAttributes());
             return $name;
         }
 

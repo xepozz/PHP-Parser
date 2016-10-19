@@ -5,6 +5,9 @@ namespace PhpParser\Node\Scalar;
 use PhpParser\Error;
 use PhpParser\Node\Scalar;
 
+/**
+ * @property int $kind One of the KIND_* class constants
+ */
 class LNumber extends Scalar
 {
     /* For use in "kind" attribute */

@@ -4,6 +4,9 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
 
+/**
+ * @property int $kind One of the KIND_* class constants
+ */
 class Array_ extends Expr
 {
     // For use in "kind" attribute

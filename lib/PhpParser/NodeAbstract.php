@@ -4,6 +4,7 @@ namespace PhpParser;
 
 abstract class NodeAbstract implements Node, \JsonSerializable
 {
+    /** @var array Node attributes */
     protected $attributes;
 
     /**
@@ -107,5 +108,25 @@ abstract class NodeAbstract implements Node, \JsonSerializable
 
     public function jsonSerialize() {
         return ['nodeType' => $this->getType()] + get_object_vars($this);
+    }
+
+    public function &__get($key) {
+        if (!array_key_exists($key, $this->attributes)) {
+            throw new \LogicException("Attribute \"$key\" does not exist");
+        }
+
+        return $this->attributes[$key];
+    }
+
+    public function __set($key, $value) {
+        $this->attributes[$key] = $value;
+    }
+
+    public function __isset($key) {
+        return isset($this->attributes[$key]);
+    }
+
+    public function __unset($key) {
+        unset($this->attributes[$key]);
     }
 }

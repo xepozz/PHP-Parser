@@ -34,7 +34,7 @@ class NodeAbstractTest extends \PHPUnit_Framework_TestCase
         );
 
         $node = new DummyNode('value1', 'value2', $attributes);
-        $node->notSubNode = 'value3';
+        $attributes['notSubNode'] = $node->notSubNode = 'value3';
 
         return array(
             array($attributes, $node),
@@ -119,7 +119,7 @@ class NodeAbstractTest extends \PHPUnit_Framework_TestCase
      */
     public function testIteration(array $attributes, Node $node) {
         // Iteration is simple object iteration over properties,
-        // not over subnodes
+        // which coincide with the subnodes
         $i = 0;
         foreach ($node as $key => $value) {
             if ($i === 0) {
@@ -128,15 +128,12 @@ class NodeAbstractTest extends \PHPUnit_Framework_TestCase
             } else if ($i === 1) {
                 $this->assertSame('subNode2', $key);
                 $this->assertSame('value2', $value);
-            } else if ($i === 2) {
-                $this->assertSame('notSubNode', $key);
-                $this->assertSame('value3', $value);
             } else {
                 throw new \Exception;
             }
             $i++;
         }
-        $this->assertSame(3, $i);
+        $this->assertSame(2, $i);
     }
 
     public function testAttributes() {
@@ -165,6 +162,28 @@ class NodeAbstractTest extends \PHPUnit_Framework_TestCase
             ),
             $node->getAttributes()
         );
+
+        // Test overloaded properties accessing attributes as well
+        $this->assertTrue(isset($node->key));
+        $this->assertSame('value', $node->key);
+        $node->key = 'newValue';
+        $this->assertSame('newValue', $node->key);
+        unset($node->key);
+        $this->assertFalse(isset($node->key));
+
+        $this->assertFalse(isset($node->null)); // False per standard semantics
+        $this->assertNull($node->null);
+        $this->assertSame(array('null' => null), $node->getAttributes());
+    }
+
+    /**
+     * @expectedException \LogicException
+     * @expectedExceptionMessage Attribute "foo" does not exist
+     */
+    public function testUnknownAttribute() {
+        /** @var $node Node */
+        $node = $this->getMockForAbstractClass('PhpParser\NodeAbstract');
+        $node->foo;
     }
 
     public function testJsonSerialization() {

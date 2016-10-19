@@ -5,6 +5,10 @@ namespace PhpParser\Node\Scalar;
 use PhpParser\Error;
 use PhpParser\Node\Scalar;
 
+/**
+ * @property int    $kind     One of the KIND_* class constants
+ * @property string $docLabel Label of doc comment (only available if string defined as doc string)
+ */
 class String_ extends Scalar
 {
     /* For use in "kind" attribute */
