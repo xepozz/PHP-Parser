@@ -6,9 +6,7 @@ Cannot use 'self' as namespace name from 1:17 to 1:20
 array(
     0: Stmt_Namespace(
         name: Name(
-            parts: array(
-                0: self
-            )
+            name: self
         )
         stmts: array(
         )
@@ -21,9 +19,7 @@ Cannot use 'PARENT' as namespace name from 1:17 to 1:22
 array(
     0: Stmt_Namespace(
         name: Name(
-            parts: array(
-                0: PARENT
-            )
+            name: PARENT
         )
         stmts: array(
         )
@@ -46,9 +42,7 @@ array(
             0: Stmt_UseUse(
                 type: TYPE_UNKNOWN (0)
                 name: Name(
-                    parts: array(
-                        0: A
-                    )
+                    name: A
                 )
                 alias: self
             )
@@ -66,9 +60,7 @@ array(
             0: Stmt_UseUse(
                 type: TYPE_UNKNOWN (0)
                 name: Name(
-                    parts: array(
-                        0: B
-                    )
+                    name: B
                 )
                 alias: PARENT
             )

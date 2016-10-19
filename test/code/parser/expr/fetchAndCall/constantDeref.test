@@ -185,9 +185,7 @@ array(
     6: Expr_ArrayDimFetch(
         var: Expr_ConstFetch(
             name: Name(
-                parts: array(
-                    0: FOO
-                )
+                name: FOO
             )
         )
         dim: Scalar_LNumber(
@@ -197,9 +195,7 @@ array(
     7: Expr_ArrayDimFetch(
         var: Expr_ClassConstFetch(
             class: Name(
-                parts: array(
-                    0: Foo
-                )
+                name: Foo
             )
             name: BAR
         )

@@ -21,18 +21,14 @@ new $a->b{'c'}();
 array(
     0: Expr_New(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         args: array(
         )
     )
     1: Expr_New(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         args: array(
             0: Arg(
@@ -69,9 +65,7 @@ array(
     4: Expr_New(
         class: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
             )
             name: b
         )
@@ -136,9 +130,7 @@ array(
     )
     9: Expr_New(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         args: array(
         )

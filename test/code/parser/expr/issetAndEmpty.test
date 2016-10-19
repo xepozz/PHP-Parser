@@ -37,9 +37,7 @@ array(
     3: Expr_Empty(
         expr: Expr_FuncCall(
             name: Name(
-                parts: array(
-                    0: foo
-                )
+                name: foo
             )
             args: array(
             )

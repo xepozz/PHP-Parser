@@ -36,10 +36,7 @@ class NodeDumperTest extends \PHPUnit_Framework_TestCase
             array(
                 new Node\Name(array('Hallo', 'World')),
 'Name(
-    parts: array(
-        0: Hallo
-        1: World
-    )
+    name: Hallo\World
 )'
             ),
             array(

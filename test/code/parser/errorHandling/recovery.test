@@ -12,27 +12,21 @@ Syntax error, unexpected EOF from 5:6 to 5:6
 array(
     0: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: foo
-            )
+            name: foo
         )
         args: array(
         )
     )
     1: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: bar
-            )
+            name: bar
         )
         args: array(
         )
     )
     2: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: baz
-            )
+            name: baz
         )
         args: array(
         )
@@ -49,27 +43,21 @@ Syntax error, unexpected T_STRING from 4:1 to 4:3
 array(
     0: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: foo
-            )
+            name: foo
         )
         args: array(
         )
     )
     1: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: bar
-            )
+            name: bar
         )
         args: array(
         )
     )
     2: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: baz
-            )
+            name: baz
         )
         args: array(
         )
@@ -86,27 +74,21 @@ Syntax error, unexpected T_STRING from 5:1 to 5:3
 array(
     0: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: foo
-            )
+            name: foo
         )
         args: array(
         )
     )
     1: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: bar
-            )
+            name: bar
         )
         args: array(
         )
     )
     2: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: baz
-            )
+            name: baz
         )
         args: array(
         )
@@ -121,9 +103,7 @@ Syntax error, unexpected ';' from 3:5 to 3:5
 array(
     0: Expr_ConstFetch(
         name: Name(
-            parts: array(
-                0: abc
-            )
+            name: abc
         )
     )
     1: Scalar_LNumber(

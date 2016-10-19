@@ -55,9 +55,7 @@ array(
     4: Expr_New(
         class: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: Test
-                )
+                name: Test
             )
             name: className
         )

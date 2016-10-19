@@ -196,9 +196,7 @@ array(
         )
         expr: Expr_New(
             class: Name(
-                parts: array(
-                    0: Test
-                )
+                name: Test
             )
             args: array(
             )
@@ -222,9 +220,7 @@ array(
     )
     4: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: Test
-            )
+            name: Test
         )
         name: list
         args: array(
@@ -232,9 +228,7 @@ array(
     )
     5: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: Test
-            )
+            name: Test
         )
         name: protected
         args: array(
@@ -254,17 +248,13 @@ array(
     )
     8: Expr_ClassConstFetch(
         class: Name(
-            parts: array(
-                0: Test
-            )
+            name: Test
         )
         name: TRAIT
     )
     9: Expr_ClassConstFetch(
         class: Name(
-            parts: array(
-                0: Test
-            )
+            name: Test
         )
         name: FINAL
     )
@@ -278,37 +268,27 @@ array(
             0: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        parts: array(
-                            0: TraitA
-                        )
+                        name: TraitA
                     )
                     1: Name(
-                        parts: array(
-                            0: TraitB
-                        )
+                        name: TraitB
                     )
                 )
                 adaptations: array(
                     0: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            parts: array(
-                                0: TraitA
-                            )
+                            name: TraitA
                         )
                         method: catch
                         insteadof: array(
                             0: Name_Relative(
-                                parts: array(
-                                    0: TraitB
-                                )
+                                name: TraitB
                             )
                         )
                     )
                     1: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: TraitA
-                            )
+                            name: TraitA
                         )
                         method: list
                         newModifier: null
@@ -316,9 +296,7 @@ array(
                     )
                     2: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: TraitB
-                            )
+                            name: TraitB
                         )
                         method: throw
                         newModifier: MODIFIER_PROTECTED (2)
@@ -326,9 +304,7 @@ array(
                     )
                     3: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: TraitB
-                            )
+                            name: TraitB
                         )
                         method: self
                         newModifier: MODIFIER_PROTECTED (2)
@@ -342,9 +318,7 @@ array(
                     )
                     5: Stmt_TraitUseAdaptation_Alias(
                         trait: Name_FullyQualified(
-                            parts: array(
-                                0: TraitC
-                            )
+                            name: TraitC
                         )
                         method: exit
                         newModifier: null
@@ -352,9 +326,7 @@ array(
                     )
                     6: Stmt_TraitUseAdaptation_Alias(
                         trait: Name_Relative(
-                            parts: array(
-                                0: TraitC
-                            )
+                            name: TraitC
                         )
                         method: exit
                         newModifier: null
@@ -362,16 +334,12 @@ array(
                     )
                     7: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            parts: array(
-                                0: TraitA
-                            )
+                            name: TraitA
                         )
                         method: catch
                         insteadof: array(
                             0: Name(
-                                parts: array(
-                                    0: TraitB
-                                )
+                                name: TraitB
                             )
                         )
                     )

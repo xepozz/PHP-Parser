@@ -9,24 +9,18 @@ A::class;
 array(
     0: Expr_ConstFetch(
         name: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
     )
     1: Expr_ClassConstFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: B
     )
     2: Expr_ClassConstFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: class
     )

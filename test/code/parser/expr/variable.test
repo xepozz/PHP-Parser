@@ -22,9 +22,7 @@ array(
     2: Expr_Variable(
         name: Expr_FuncCall(
             name: Name(
-                parts: array(
-                    0: foo
-                )
+                name: foo
             )
             args: array(
             )

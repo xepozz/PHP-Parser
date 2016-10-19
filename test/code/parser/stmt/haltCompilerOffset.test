@@ -9,17 +9,13 @@ Foo
 array(
     0: Expr_FuncCall(
         name: Name(
-            parts: array(
-                0: var_dump
-            )
+            name: var_dump
         )
         args: array(
             0: Arg(
                 value: Expr_ConstFetch(
                     name: Name(
-                        parts: array(
-                            0: __HALT_COMPILER_OFFSET__
-                        )
+                        name: __HALT_COMPILER_OFFSET__
                     )
                 )
                 byRef: false

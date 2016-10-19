@@ -12,9 +12,7 @@ array(
         stmts: array(
             0: Expr_FuncCall(
                 name: Name(
-                    parts: array(
-                        0: foo
-                    )
+                    name: foo
                 )
                 args: array(
                 )

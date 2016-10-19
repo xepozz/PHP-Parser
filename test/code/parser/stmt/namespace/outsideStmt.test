@@ -23,9 +23,7 @@ array(
     )
     1: Stmt_Namespace(
         name: Name(
-            parts: array(
-                0: B
-            )
+            name: B
         )
         stmts: array(
         )
@@ -48,9 +46,7 @@ array(
     )
     1: Stmt_Namespace(
         name: Name(
-            parts: array(
-                0: Foo
-            )
+            name: Foo
         )
         stmts: array(
         )

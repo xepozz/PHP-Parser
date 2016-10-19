@@ -14,9 +14,7 @@ A::$A::$b;
 array(
     0: Expr_StaticPropertyFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: b
     )
@@ -56,9 +54,7 @@ array(
     )
     5: Expr_StaticPropertyFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Expr_Variable(
             name: b
@@ -67,9 +63,7 @@ array(
     6: Expr_ArrayDimFetch(
         var: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
             )
             name: Expr_Variable(
                 name: c
@@ -82,9 +76,7 @@ array(
     7: Expr_StaticPropertyFetch(
         class: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
             )
             name: A
         )

@@ -47,9 +47,7 @@ array(
             0: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        parts: array(
-                            0: C
-                        )
+                        name: C
                     )
                 )
                 adaptations: array(
@@ -58,9 +56,7 @@ array(
             1: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        parts: array(
-                            0: D
-                        )
+                        name: D
                     )
                 )
                 adaptations: array(
@@ -87,47 +83,33 @@ array(
             2: Stmt_TraitUse(
                 traits: array(
                     0: Name(
-                        parts: array(
-                            0: E
-                        )
+                        name: E
                     )
                     1: Name(
-                        parts: array(
-                            0: F
-                        )
+                        name: F
                     )
                     2: Name(
-                        parts: array(
-                            0: G
-                        )
+                        name: G
                     )
                 )
                 adaptations: array(
                     0: Stmt_TraitUseAdaptation_Precedence(
                         trait: Name(
-                            parts: array(
-                                0: E
-                            )
+                            name: E
                         )
                         method: a
                         insteadof: array(
                             0: Name(
-                                parts: array(
-                                    0: F
-                                )
+                                name: F
                             )
                             1: Name(
-                                parts: array(
-                                    0: G
-                                )
+                                name: G
                             )
                         )
                     )
                     1: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: E
-                            )
+                            name: E
                         )
                         method: b
                         newModifier: MODIFIER_PROTECTED (2)
@@ -135,9 +117,7 @@ array(
                     )
                     2: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: E
-                            )
+                            name: E
                         )
                         method: d
                         newModifier: null
@@ -145,9 +125,7 @@ array(
                     )
                     3: Stmt_TraitUseAdaptation_Alias(
                         trait: Name(
-                            parts: array(
-                                0: E
-                            )
+                            name: E
                         )
                         method: f
                         newModifier: MODIFIER_PRIVATE (4)

@@ -13,9 +13,7 @@ array(
     0: Expr_ArrayDimFetch(
         var: Expr_ClassConstFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
             )
             name: A
         )
@@ -28,9 +26,7 @@ array(
             var: Expr_ArrayDimFetch(
                 var: Expr_ClassConstFetch(
                     class: Name(
-                        parts: array(
-                            0: A
-                        )
+                        name: A
                     )
                     name: A
                 )

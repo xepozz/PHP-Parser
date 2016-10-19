@@ -40,15 +40,15 @@ class Standard extends PrettyPrinterAbstract
     // Names
 
     protected function pName(Name $node) {
-        return implode('\\', $node->parts);
+        return $node->name;
     }
 
     protected function pName_FullyQualified(Name\FullyQualified $node) {
-        return '\\' . implode('\\', $node->parts);
+        return '\\' . $node->name;
     }
 
     protected function pName_Relative(Name\Relative $node) {
-        return 'namespace\\' . implode('\\', $node->parts);
+        return 'namespace\\' . $node->name;
     }
 
     // Magic Constants

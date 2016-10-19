@@ -404,7 +404,7 @@ EOC;
         $stmts = $traverser->traverse($stmts);
         $stmt = $stmts[0];
 
-        $this->assertSame(array('Bar', 'Baz'), $stmt->stmts[1]->expr->class->parts);
+        $this->assertSame('Bar\Baz', $stmt->stmts[1]->expr->class->toString());
     }
 
     public function testSpecialClassNamesAreCaseInsensitive() {

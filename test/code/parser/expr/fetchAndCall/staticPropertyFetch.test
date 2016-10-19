@@ -16,9 +16,7 @@ A::$b{'c'};
 array(
     0: Expr_StaticPropertyFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
             comments: array(
                 0: // property name variations
             )
@@ -30,9 +28,7 @@ array(
     )
     1: Expr_StaticPropertyFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Expr_Variable(
             name: b
@@ -40,9 +36,7 @@ array(
     )
     2: Expr_StaticPropertyFetch(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Scalar_String(
             value: b
@@ -51,9 +45,7 @@ array(
     3: Expr_ArrayDimFetch(
         var: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
                 comments: array(
                     0: // array access
                 )
@@ -73,9 +65,7 @@ array(
     4: Expr_ArrayDimFetch(
         var: Expr_StaticPropertyFetch(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
             )
             name: b
         )

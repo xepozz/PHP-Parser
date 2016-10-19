@@ -22,9 +22,7 @@ $a['b']::c();
 array(
     0: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
             comments: array(
                 0: // method name variations
             )
@@ -38,9 +36,7 @@ array(
     )
     1: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Scalar_String(
             value: b
@@ -50,9 +46,7 @@ array(
     )
     2: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Expr_Variable(
             name: b
@@ -62,9 +56,7 @@ array(
     )
     3: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Expr_ArrayDimFetch(
             var: Expr_Variable(
@@ -79,9 +71,7 @@ array(
     )
     4: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         name: Expr_ArrayDimFetch(
             var: Expr_ArrayDimFetch(
@@ -102,9 +92,7 @@ array(
     5: Expr_ArrayDimFetch(
         var: Expr_StaticCall(
             class: Name(
-                parts: array(
-                    0: A
-                )
+                name: A
                 comments: array(
                     0: // array dereferencing
                 )
@@ -125,9 +113,7 @@ array(
     )
     6: Expr_StaticCall(
         class: Name(
-            parts: array(
-                0: static
-            )
+            name: static
             comments: array(
                 0: // class name variations
             )

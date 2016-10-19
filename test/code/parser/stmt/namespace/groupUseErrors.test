@@ -10,17 +10,13 @@ array(
     0: Stmt_GroupUse(
         type: TYPE_UNKNOWN (0)
         prefix: Name(
-            parts: array(
-                0: Bar
-            )
+            name: Bar
         )
         uses: array(
             0: Stmt_UseUse(
                 type: TYPE_NORMAL (1)
                 name: Name(
-                    parts: array(
-                        0: Foo
-                    )
+                    name: Foo
                 )
                 alias: Foo
             )
@@ -36,16 +32,12 @@ Syntax error, unexpected '{', expecting ',' or ';' from 3:9 to 3:9
 array(
     0: Expr_ConstFetch(
         name: Name(
-            parts: array(
-                0: Bar
-            )
+            name: Bar
         )
     )
     1: Expr_ConstFetch(
         name: Name(
-            parts: array(
-                0: Baz
-            )
+            name: Baz
         )
     )
 )
@@ -58,9 +50,7 @@ Syntax error, unexpected T_NS_SEPARATOR, expecting T_STRING or T_FUNCTION or T_C
 array(
     0: Expr_ConstFetch(
         name: Name_FullyQualified(
-            parts: array(
-                0: Bar
-            )
+            name: Bar
         )
     )
 )

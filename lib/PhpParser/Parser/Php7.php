@@ -1124,11 +1124,11 @@ class Php7 extends \PhpParser\ParserAbstract
     }
 
     protected function reduceRule82() {
-         $this->semValue = array($this->semStack[$this->stackPos-(1-1)]);
+         $this->semValue = $this->semStack[$this->stackPos-(1-1)];
     }
 
     protected function reduceRule83() {
-         $this->semStack[$this->stackPos-(3-1)][] = $this->semStack[$this->stackPos-(3-3)]; $this->semValue = $this->semStack[$this->stackPos-(3-1)];
+         $this->semValue = $this->semStack[$this->stackPos-(3-1)] . '\\' . $this->semStack[$this->stackPos-(3-3)];
     }
 
     protected function reduceRule84() {

@@ -14,9 +14,7 @@ array(
             0: Param(
                 type: NullableType(
                     type: Name(
-                        parts: array(
-                            0: Foo
-                        )
+                        name: Foo
                     )
                 )
                 byRef: false
@@ -36,9 +34,7 @@ array(
         )
         returnType: NullableType(
             type: Name(
-                parts: array(
-                    0: Baz
-                )
+                name: Baz
             )
         )
         stmts: array(

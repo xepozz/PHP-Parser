@@ -6,26 +6,22 @@ use PhpParser\NodeAbstract;
 
 class Name extends NodeAbstract
 {
-    /** @var string[] Parts of the name */
-    public $parts;
+    /** @var string Name */
+    public $name;
 
     /**
      * Constructs a name node.
      *
-     * @param string|array $parts      Parts of the name (or name as string)
+     * @param string|array $name       Name or parts of name
      * @param array        $attributes Additional attributes
      */
-    public function __construct($parts, array $attributes = array()) {
-        if (!is_array($parts)) {
-            $parts = explode('\\', $parts);
-        }
-
+    public function __construct($name, array $attributes = array()) {
         parent::__construct($attributes);
-        $this->parts = $parts;
+        $this->name = self::prepareName($name);
     }
 
     public function getSubNodeNames() {
-        return array('parts');
+        return array('name');
     }
 
     /**
@@ -34,7 +30,10 @@ class Name extends NodeAbstract
      * @return string First part of the name
      */
     public function getFirst() {
-        return $this->parts[0];
+        if (false !== $first = strpos($this->name, '\\')) {
+            return substr($this->name, 0, $first);
+        }
+        return $this->name;
     }
 
     /**
@@ -43,7 +42,10 @@ class Name extends NodeAbstract
      * @return string Last part of the name
      */
     public function getLast() {
-        return $this->parts[count($this->parts) - 1];
+        if (false !== $last = strrpos($this->name, '\\')) {
+            return substr($this->name, $last + 1);
+        }
+        return $this->name;
     }
 
     /**
@@ -52,7 +54,7 @@ class Name extends NodeAbstract
      * @return bool Whether the name is unqualified
      */
     public function isUnqualified() {
-        return 1 == count($this->parts);
+        return false === strpos($this->name, '\\');
     }
 
     /**
@@ -61,7 +63,7 @@ class Name extends NodeAbstract
      * @return bool Whether the name is qualified
      */
     public function isQualified() {
-        return 1 < count($this->parts);
+        return false !== strpos($this->name, '\\');
     }
 
     /**
@@ -89,7 +91,7 @@ class Name extends NodeAbstract
      * @return string String representation
      */
     public function toString() {
-        return implode('\\', $this->parts);
+        return $this->name;
     }
 
     /**
@@ -99,7 +101,7 @@ class Name extends NodeAbstract
      * @return string String representation
      */
     public function __toString() {
-        return implode('\\', $this->parts);
+        return $this->name;
     }
 
     /**
@@ -108,18 +110,27 @@ class Name extends NodeAbstract
      * This method returns a new instance of the same type as the original and with the same
      * attributes.
      *
-     * If the slice is empty, a Name with an empty parts array is returned. While this is
-     * meaningless in itself, it works correctly in conjunction with concat().
+     * If the slice is empty, null is returned. The null value is handled correctly in conjunction
+     * with concat().
      *
      * Offset and length have the same meaning as in array_slice().
      *
      * @param int      $offset Offset to start the slice at (may be negative)
      * @param int|null $length Length of the slice (may be negative)
      *
-     * @return static Sliced name
+     * @return static|null Sliced name, or null for empty slices
      */
     public function slice($offset, $length = null) {
-        $numParts = count($this->parts);
+        if ($offset === 1 && $length === null) {
+            // Short-circuit the common case
+            if (false !== $first = strpos($this->name, '\\')) {
+                return new static(substr($this->name, $first + 1));
+            }
+            return null;
+        }
+
+        $parts = explode('\\', $this->name);
+        $numParts = count($parts);
 
         $realOffset = $offset < 0 ? $offset + $numParts : $offset;
         if ($realOffset < 0 || $realOffset > $numParts) {
@@ -135,7 +146,11 @@ class Name extends NodeAbstract
             }
         }
 
-        return new static(array_slice($this->parts, $realOffset, $realLength), $this->attributes);
+        $slice = array_slice($parts, $realOffset, $realLength);
+        if (empty($slice)) {
+            return null;
+        }
+        return new static(implode('\\', $slice), $this->attributes);
     }
 
     /**
@@ -144,37 +159,49 @@ class Name extends NodeAbstract
      * The type of the generated instance depends on which class this method is called on, for
      * example Name\FullyQualified::concat() will yield a Name\FullyQualified instance.
      *
-     * @param string|array|self $name1      The first name
-     * @param string|array|self $name2      The second name
-     * @param array             $attributes Attributes to assign to concatenated name
+     * Concatenation with null returns a new instance of the other name (or null if both are null).
+     *
+     * @param string|array|self|null $name1      The first name
+     * @param string|array|self|null $name2      The second name
+     * @param array                  $attributes Attributes to assign to concatenated name
      *
      * @return static Concatenated name
      */
     public static function concat($name1, $name2, array $attributes = []) {
+        if (null === $name1 && null === $name2) {
+            return null;
+        } else if (null === $name1) {
+            return new static(self::prepareName($name2), $attributes);
+        } else if (null === $name2) {
+            return new static(self::prepareName($name1), $attributes);
+        }
         return new static(
-            array_merge(self::prepareName($name1), self::prepareName($name2)), $attributes
+            self::prepareName($name1) . '\\' . self::prepareName($name2), $attributes
         );
     }
 
     /**
      * Prepares a (string, array or Name node) name for use in name changing methods by converting
-     * it to an array.
+     * it into a string.
      *
      * @param string|array|self $name Name to prepare
      *
-     * @return array Prepared name
+     * @return string Prepared name
      */
     private static function prepareName($name) {
-        if (is_string($name)) {
-            return explode('\\', $name);
-        } elseif (is_array($name)) {
+        if (\is_string($name)) {
             return $name;
         } elseif ($name instanceof self) {
-            return $name->parts;
+            return $name->name;
+        } elseif (\is_array($name)) {
+            if (empty($name)) {
+                throw new \InvalidArgumentException('Name part array cannot be empty');
+            }
+            return implode('\\', $name);
         }
 
         throw new \InvalidArgumentException(
-            'When changing a name you need to pass either a string, an array or a Name node'
+            'Expected string or Name node (or array -- deprecated)'
         );
     }
 }

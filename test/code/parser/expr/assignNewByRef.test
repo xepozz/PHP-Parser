@@ -11,9 +11,7 @@ array(
         )
         expr: Expr_New(
             class: Name(
-                parts: array(
-                    0: B
-                )
+                name: B
             )
             args: array(
             )
@@ -29,9 +27,7 @@ Syntax error, unexpected T_NEW from 2:7 to 2:9
 array(
     0: Expr_New(
         class: Name(
-            parts: array(
-                0: B
-            )
+            name: B
         )
         args: array(
         )

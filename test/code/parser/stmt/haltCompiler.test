@@ -39,9 +39,7 @@ __halt_compiler();
 array(
     0: Stmt_Namespace(
         name: Name(
-            parts: array(
-                0: A
-            )
+            name: A
         )
         stmts: array(
             0: Expr_Variable(

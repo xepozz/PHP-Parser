@@ -40,13 +40,13 @@ identifier:
     | semi_reserved                                         { $$ = $1; }
 ;
 
-namespace_name_parts:
-      T_STRING                                              { init($1); }
-    | namespace_name_parts T_NS_SEPARATOR T_STRING          { push($1, $3); }
+raw_namespace_name:
+      T_STRING                                              { $$ = $1; }
+    | raw_namespace_name T_NS_SEPARATOR T_STRING            { $$ = $1 . '\\' . $3; }
 ;
 
 namespace_name:
-      namespace_name_parts                                  { $$ = Name[$1]; }
+      raw_namespace_name                                    { $$ = Name[$1]; }
 ;
 
 top_statement:
@@ -72,15 +72,15 @@ use_type:
     | T_CONST                                               { $$ = Stmt\Use_::TYPE_CONSTANT; }
 ;
 
-/* Using namespace_name_parts here to avoid s/r conflict on T_NS_SEPARATOR */
+/* Using raw_namespace_name here to avoid s/r conflict on T_NS_SEPARATOR */
 group_use_declaration:
-      T_USE use_type namespace_name_parts T_NS_SEPARATOR '{' unprefixed_use_declarations '}'
+      T_USE use_type raw_namespace_name T_NS_SEPARATOR '{' unprefixed_use_declarations '}'
           { $$ = Stmt\GroupUse[new Name($3, stackAttributes(#3)), $6, $2]; }
-    | T_USE use_type T_NS_SEPARATOR namespace_name_parts T_NS_SEPARATOR '{' unprefixed_use_declarations '}'
+    | T_USE use_type T_NS_SEPARATOR raw_namespace_name T_NS_SEPARATOR '{' unprefixed_use_declarations '}'
           { $$ = Stmt\GroupUse[new Name($4, stackAttributes(#4)), $7, $2]; }
-    | T_USE namespace_name_parts T_NS_SEPARATOR '{' inline_use_declarations '}'
+    | T_USE raw_namespace_name T_NS_SEPARATOR '{' inline_use_declarations '}'
           { $$ = Stmt\GroupUse[new Name($2, stackAttributes(#2)), $5, Stmt\Use_::TYPE_UNKNOWN]; }
-    | T_USE T_NS_SEPARATOR namespace_name_parts T_NS_SEPARATOR '{' inline_use_declarations '}'
+    | T_USE T_NS_SEPARATOR raw_namespace_name T_NS_SEPARATOR '{' inline_use_declarations '}'
           { $$ = Stmt\GroupUse[new Name($3, stackAttributes(#3)), $6, Stmt\Use_::TYPE_UNKNOWN]; }
 ;
 
@@ -659,9 +659,9 @@ class_name:
 ;
 
 name:
-      namespace_name_parts                                  { $$ = Name[$1]; }
-    | T_NS_SEPARATOR namespace_name_parts                   { $$ = Name\FullyQualified[$2]; }
-    | T_NAMESPACE T_NS_SEPARATOR namespace_name_parts       { $$ = Name\Relative[$3]; }
+      raw_namespace_name                                    { $$ = Name[$1]; }
+    | T_NS_SEPARATOR raw_namespace_name                     { $$ = Name\FullyQualified[$2]; }
+    | T_NAMESPACE T_NS_SEPARATOR raw_namespace_name         { $$ = Name\Relative[$3]; }
 ;
 
 class_name_reference:
