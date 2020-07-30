@@ -13,6 +13,12 @@ class ClassTest extends \PHPUnit\Framework\TestCase
         return new Class_($class);
     }
 
+    public function testNamespacedName() {
+        $node = $this->createClassBuilder('SomeLogger')->getNode();
+
+        $this->assertNull($node->namespacedName);
+    }
+
     public function testExtendsImplements() {
         $node = $this->createClassBuilder('SomeLogger')
             ->extend('BaseLogger')

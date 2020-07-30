@@ -331,7 +331,7 @@ EOC;
         $this->assertSame('NS\\C', (string) $stmts[0]->stmts[2]->namespacedName);
         $this->assertSame('NS\\D', (string) $stmts[0]->stmts[3]->consts[0]->namespacedName);
         $this->assertSame('NS\\E', (string) $stmts[0]->stmts[4]->namespacedName);
-        $this->assertObjectNotHasAttribute('namespacedName', $stmts[0]->stmts[5]->class);
+        $this->assertNull($stmts[0]->stmts[5]->class->namespacedName);
 
         $stmts = $traverser->traverse([new Stmt\Namespace_(null, $nsStmts)]);
         $this->assertSame('A',     (string) $stmts[0]->stmts[0]->namespacedName);
@@ -339,7 +339,7 @@ EOC;
         $this->assertSame('C',     (string) $stmts[0]->stmts[2]->namespacedName);
         $this->assertSame('D',     (string) $stmts[0]->stmts[3]->consts[0]->namespacedName);
         $this->assertSame('E',     (string) $stmts[0]->stmts[4]->namespacedName);
-        $this->assertObjectNotHasAttribute('namespacedName', $stmts[0]->stmts[5]->class);
+        $this->assertNull($stmts[0]->stmts[5]->class->namespacedName);
     }
 
     public function testAddRuntimeResolvedNamespacedName() {
